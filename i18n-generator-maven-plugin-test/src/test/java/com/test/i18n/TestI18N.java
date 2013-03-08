@@ -5,7 +5,7 @@ import java.util.Locale;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.github.ggiamarchi.i18n.runtime.I18NSupport.LocaleProvider;
+import com.github.ggiamarchi.i18n.runtime.LocaleProvider;
 
 public class TestI18N {
 
