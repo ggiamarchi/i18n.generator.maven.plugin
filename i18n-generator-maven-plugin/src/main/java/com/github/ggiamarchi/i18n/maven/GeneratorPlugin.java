@@ -11,7 +11,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.slf4j.impl.StaticLoggerBinder;
 
-import com.github.ggiamarchi.i18n.Generator;
+import com.github.ggiamarchi.i18n.Launcher;
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_SOURCES)
 public class GeneratorPlugin extends AbstractMojo {
@@ -38,7 +38,7 @@ public class GeneratorPlugin extends AbstractMojo {
 	    	res[i] = resourcesDirectories.get(i).getDirectory();
 	    }
 	    
-	    new Generator().run(bundles.split(","), srcDirectory, res, outputDirectory);
+	    new Launcher().run(bundles.split(","), srcDirectory, res, outputDirectory);
 
     }
 
