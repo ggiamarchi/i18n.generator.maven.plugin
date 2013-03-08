@@ -35,20 +35,11 @@ public class GeneratorPlugin extends AbstractMojo {
 	    
 	    String [] res = new String[resourcesDirectories.size()];
 	    for (int i = 0 ; i < res.length ; i++) {
-	    	res[i] = normalizePath(resourcesDirectories.get(i).getDirectory());
+	    	res[i] = resourcesDirectories.get(i).getDirectory();
 	    }
 	    
-	    new Generator().run(
-	    		bundles.split(","),
-	    		normalizePath(srcDirectory),
-	    		res,
-	    		normalizePath(outputDirectory)
-	    	);
+	    new Generator().run(bundles.split(","), srcDirectory, res, outputDirectory);
 
     }
-	
-	private String normalizePath(String path) {
-		return path.replaceAll("/|\\\\", "/");
-	}
 
 }
