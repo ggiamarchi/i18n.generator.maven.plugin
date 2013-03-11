@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>com.github.ggiamarchi.i18n</groupId>
+
+	<groupId>com.github.i18n-generator-maven-plugin</groupId>
 	<artifactId>i18n-generator-maven-plugin-parent</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<modules>
-		<module>i18n-runtime</module>
-		<module>i18n-generator</module>
-		<module>i18n-generator-maven-plugin</module>
-		<module>i18n-generator-maven-plugin-test</module>
-	</modules>
+	<name>I18N Generator Maven Plugin Project</name>
+	<url>https://github.com/ggiamarchi/i18n-generator-maven-plugin</url>
+	<description>Maven plugin that generate Java class with methods that match i18n properties</description>
+
+	<licenses>
+		<!-- TODO -->
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>ggiamarchi</id>
+			<name>Guillaume Giamarchi</name>
+			<email>guillaume.giamarchi@gmail.com</email>
+		</developer>
+	</developers>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/ggiamarchi/i18n-generator-maven-plugin/issues</url>
+	</issueManagement>
+
+	<scm>
+		<url>https://github.com/ggiamarchi/i18n-generator-maven-plugin</url>
+		<connection>scm:git:git://github.com/ggiamarchi/i18n-generator-maven-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:ggiamarchi/i18n-generator-maven-plugin.git</developerConnection>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus snapshot repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Sonatype Nexus release repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -50,7 +84,75 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+<!-- 				<configuration>
+					<aggregate>true</aggregate>
+				</configuration> -->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<mavenExecutorId>forked-path</mavenExecutorId>
+					<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.4</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<modules>
+		<module>i18n-runtime</module>
+		<module>i18n-generator</module>
+		<module>i18n-generator-maven-plugin</module>
+		<module>i18n-generator-maven-plugin-test</module>
+	</modules>
 
 </project>

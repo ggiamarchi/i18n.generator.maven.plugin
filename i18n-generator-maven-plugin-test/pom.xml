@@ -4,17 +4,19 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.github.ggiamarchi.i18n</groupId>
+		<groupId>com.github.i18n-generator-maven-plugin</groupId>
 		<artifactId>i18n-generator-maven-plugin-parent</artifactId>
 		<version>0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>i18n-generator-maven-plugin-test</artifactId>
 	<packaging>jar</packaging>
+	<name>I18N Generator Maven Plugin Test</name>
+	<description>Tests I18N Generator Maven Plugin</description>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.ggiamarchi.i18n</groupId>
+			<groupId>com.github.i18n-generator-maven-plugin</groupId>
 			<artifactId>i18n-runtime</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
@@ -25,7 +27,7 @@
 		<plugins>
 
 			<plugin>
-				<groupId>com.github.ggiamarchi.i18n</groupId>
+				<groupId>com.github.i18n-generator-maven-plugin</groupId>
 				<artifactId>i18n-generator-maven-plugin</artifactId>
 				<version>0.1-SNAPSHOT</version>
 				<executions>
@@ -74,7 +76,7 @@
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>com.github.ggiamarchi.i18n</groupId>
+										<groupId>com.github.i18n-generator-maven-plugin</groupId>
 										<artifactId>i18n-generator-maven-plugin</artifactId>
 										<versionRange>[0.1-SNAPSHOT,)</versionRange>
 										<goals>
