@@ -39,7 +39,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<bundles>com.test.i18n.messages</bundles>
+					<i18nMessagesBundle>
+						<name>com.test.i18n.messages</name>
+					</i18nMessagesBundle>
 				</configuration>
 			</plugin>
 
