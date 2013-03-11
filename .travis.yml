@@ -3,3 +3,9 @@ jdk:
   - oraclejdk7
   - openjdk6
   - openjdk7
+notifications:
+  email:
+    recipients:
+      - guillaume.giamarchi@gmail.com
+    on_success: change
+    on_failure: always
