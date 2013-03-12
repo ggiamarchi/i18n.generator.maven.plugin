@@ -1,6 +1,8 @@
 package com.github.ggiamarchi.i18n.maven;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
@@ -18,8 +20,7 @@ import com.github.ggiamarchi.i18n.GeneratorLauncher;
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_SOURCES, threadSafe = false)
 public class GeneratorPlugin extends AbstractMojo {
 
-	@SuppressWarnings("unused")
-	private Logger LOG = LoggerFactory.getLogger(GeneratorPlugin.class);
+	private Logger log;
 	
 	/* *** Configurable parameters **************************************************** */
 	
@@ -53,6 +54,7 @@ public class GeneratorPlugin extends AbstractMojo {
 
 	    // bind slf4j to maven log
 	    StaticLoggerBinder.getSingleton().setLog(getLog());
+	    log = LoggerFactory.getLogger(GeneratorPlugin.class);
 	    
 	    resourcesDirectories = new String[resources.size()];
 	    for (int i = 0 ; i < resourcesDirectories.length ; i++) {
@@ -67,19 +69,35 @@ public class GeneratorPlugin extends AbstractMojo {
 	    	throw new MojoFailureException("<i18nMessagesBundle> and <i18nMessagesBundles> cannot be configured simultaneously");
 	    }
 	    
+	    Set<I18nMessagesBundle> bundles = new HashSet<I18nMessagesBundle>();
+	    
 	    if (i18nMessagesBundle != null) {
-	    	generate(i18nMessagesBundle);
+	    	bundles.add(i18nMessagesBundle);
 	    }
 	    else {
-		    for (I18nMessagesBundle i18nMessagesBundle : i18nMessagesBundles) {
-		    	generate(i18nMessagesBundle);
-		    }
+	    	bundles.addAll(i18nMessagesBundles);
 		}
 
+	    // Check pre-conditions
+	    
+	    for (I18nMessagesBundle i18nMessagesBundle : bundles) {
+			String name = i18nMessagesBundle.getName();
+			if (name == null || name.isEmpty()) {
+				throw new MojoFailureException("I18nMessagesBundle name must be defined");
+			}
+	    }
+	    
+	    // Run generations
+	    
+	    for (I18nMessagesBundle i18nMessagesBundle : bundles) {
+	    	generate(i18nMessagesBundle);
+	    }
     }
 
 	private void generate(I18nMessagesBundle bundle) throws MojoFailureException {
-		checkPreConditions(bundle);
+
+		log.info("Stating generation with bundle \"{}\"", bundle.getName());
+		
 		String outputDirectory;
 		if (bundle.getOutputDirectory() != null) {
 			outputDirectory = projectBaseDir + "/" + bundle.getOutputDirectory();
@@ -95,13 +113,6 @@ public class GeneratorPlugin extends AbstractMojo {
     	new GeneratorLauncher().execute(
     			bundle.getName(), bundle.getInterfaceName(), bundle.getClassName(),
     			srcDirectory, resourcesDirectories, outputDirectory);
-	}
-
-	private void checkPreConditions(I18nMessagesBundle bundle) throws MojoFailureException {
-		String name = bundle.getName();
-		if (name == null || name.isEmpty()) {
-			throw new MojoFailureException("I18nMessagesBundle name must be defined");
-		}
 	}
 
 }
