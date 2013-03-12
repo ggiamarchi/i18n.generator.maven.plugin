@@ -4,6 +4,10 @@
 
 # I18N Generator Maven Plugin #
 
+ * <a href="#abstract">Abstract</a>
+ * <a href="#quickstart">Quickstart</a>
+ * <a href="#user-guide">User guide</a>
+ 
 <hr/>
 
 ### Abstract ###
@@ -75,6 +79,12 @@ That's all folks !
 <hr/>
 
 ### Quickstart ###
+
+_(Available soon)_
+
+<hr/>
+
+### User guide ###
 
 _(Available soon)_
 
