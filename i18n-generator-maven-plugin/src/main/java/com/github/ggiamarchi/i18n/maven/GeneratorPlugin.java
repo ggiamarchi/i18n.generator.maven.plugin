@@ -30,7 +30,7 @@ public class GeneratorPlugin extends AbstractMojo {
 	@Parameter(required = false)
 	private List<I18nMessagesBundle> i18nMessagesBundles;
 
-	@Parameter(defaultValue = "${project.build.directory}/generated-sources/i18n")
+	@Parameter
     private String outputDirectory;
 
 	/* *** Readonly project's configuration parameters ******************************** */
@@ -41,6 +41,9 @@ public class GeneratorPlugin extends AbstractMojo {
 	@Parameter(defaultValue = "${project.build.sourceDirectory}", readonly = true)	
 	private String srcDirectory;
 	
+	@Parameter(defaultValue = "${project.build.directory}/generated-sources/i18n", readonly = true)
+	private String defaultOutputDirectory;
+
 	@Parameter(defaultValue = "${project.build.resources}", readonly = true)	
 	private List<Resource> resources;
 	
@@ -96,14 +99,20 @@ public class GeneratorPlugin extends AbstractMojo {
 
 	private void generate(I18nMessagesBundle bundle) throws MojoFailureException {
 
-		log.info("Stating generation with bundle \"{}\"", bundle.getName());
-		
+		log.info("\nStating generation with bundle \"{}\"", bundle.getName());
+
 		String outputDirectory;
+
 		if (bundle.getOutputDirectory() != null) {
 			outputDirectory = projectBaseDir + "/" + bundle.getOutputDirectory();
 		}
 		else {
-			outputDirectory = this.outputDirectory;
+			if (this.outputDirectory == null) {
+				outputDirectory = defaultOutputDirectory;
+			}
+			else {
+				outputDirectory = projectBaseDir + "/" + this.outputDirectory;
+			}
 		}
 		
 		if (outputDirectory == null) {
