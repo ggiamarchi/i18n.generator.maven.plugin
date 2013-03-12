@@ -97,16 +97,11 @@ the same as i18n-generator-maven-plugin-test-004 with the whole range of options
 ```
 
 
-# Test to implement #
-
-<hr/>
-
-
 ## i18n-generator-maven-plugin-test-006 ##
 
 ### Description ###
 
-Two i18n bundle, each with at least two languages. One with the mimnimal configuration, an the other
+Two i18n bundle, each with at least two languages. One with the mimnimal configuration, and the other
 with all default values overloaded. And a global <outputDirectory/> to make sure each bundle is generated
 in its own directory.
 
@@ -114,17 +109,17 @@ in its own directory.
 
 ```xml
 <configuration>
-    <i18nMessagesBundles>
-        <param>
-            <name>com.test.i18n.messages</name>
-            <interfaceName></interfaceName>
-            <className></className>
-            <outputDirectory></outputDirectory>
-        </param>
-        <param>
-            <name>com.test.i18n.messages</name>
-        </param>
-    </i18nMessagesBundles>
-    <outputDirectory></outputDirectory>
+	<i18nMessagesBundles>
+		<param>
+			<name>com.test.i18n.hello</name>
+			<interfaceName>messages.i18n.Hi</interfaceName>
+			<className>messages.i18n.impl.HiImpl</className>
+			<outputDirectory>target/generated-sources/messages/hi</outputDirectory>
+		</param>
+		<param>
+			<name>com.test.i18n.bye</name>
+		</param>
+	</i18nMessagesBundles>
+	<outputDirectory>target/generated-sources/messages/default</outputDirectory>
 </configuration>
 ```
