@@ -11,8 +11,7 @@
 	</parent>
 	<artifactId>i18n-generator-maven-plugin-test</artifactId>
 	<packaging>pom</packaging>
-	<name>I18N Generator Maven Plugin Test</name>
-	<description>Tests I18N Generator Maven Plugin</description>
+	<name>I18N Generator Maven Plugin Tests</name>
 
 	<dependencies>
 		<dependency>
@@ -24,6 +23,7 @@
 
 	<modules>
 		<module>i18n-generator-maven-plugin-test-001</module>
+		<module>i18n-generator-maven-plugin-test-002</module>
 	</modules>
 	
 </project>
