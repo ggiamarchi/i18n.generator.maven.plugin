@@ -58,13 +58,6 @@ default package.
 </configuration>
 ```
 
-
-
-# Test to implement #
-
-<hr/>
-
-
 ## i18n-generator-maven-plugin-test-004 ##
 
 ### Description ###
@@ -81,6 +74,11 @@ the same as i18n-generator-maven-plugin-test-001 with a defined <outputDirectory
     <outputDirectory>target/generated-sources/messages</outputDirectory>
 </configuration>
 ```
+
+
+# Test to implement #
+
+<hr/>
 
 
 ## i18n-generator-maven-plugin-test-005 ##
