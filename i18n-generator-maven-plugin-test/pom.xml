@@ -10,7 +10,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>i18n-generator-maven-plugin-test</artifactId>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<name>I18N Generator Maven Plugin Test</name>
 	<description>Tests I18N Generator Maven Plugin</description>
 
@@ -22,80 +22,8 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-
-		<plugins>
-
-			<plugin>
-				<groupId>com.github.i18n-generator-maven-plugin</groupId>
-				<artifactId>i18n-generator-maven-plugin</artifactId>
-				<version>0.1-SNAPSHOT</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<i18nMessagesBundle>
-						<name>com.test.i18n.messages</name>
-					</i18nMessagesBundle>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>add-domain-generated-sources</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>target/generated-sources/i18n</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-		</plugins>
-
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>com.github.i18n-generator-maven-plugin</groupId>
-										<artifactId>i18n-generator-maven-plugin</artifactId>
-										<versionRange>[0.1-SNAPSHOT,)</versionRange>
-										<goals>
-											<goal>generate</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-
-	</build>
-
+	<modules>
+		<module>i18n-generator-maven-plugin-test-001</module>
+	</modules>
+	
 </project>
