@@ -76,16 +76,11 @@ the same as i18n-generator-maven-plugin-test-001 with a defined <outputDirectory
 ```
 
 
-# Test to implement #
-
-<hr/>
-
-
 ## i18n-generator-maven-plugin-test-005 ##
 
 ### Description ###
 
-the same as i18n-generator-maven-plugin-test-001 with the whole range of options defined
+the same as i18n-generator-maven-plugin-test-004 with the whole range of options defined
 
 ### plugin configuration snippet ###
 
@@ -100,6 +95,11 @@ the same as i18n-generator-maven-plugin-test-001 with the whole range of options
     <outputDirectory>target/generated-sources/messages</outputDirectory>
 </configuration>
 ```
+
+
+# Test to implement #
+
+<hr/>
 
 
 ## i18n-generator-maven-plugin-test-006 ##
