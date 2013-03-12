@@ -22,10 +22,6 @@ Single i18n bundle with two languages `messages.properties` and `messages_fr.pro
 ```
 
 
-# Test to implement #
-
-<hr/>
-
 ## i18n-generator-maven-plugin-test-002 ##
 
 ### Description ###
@@ -43,7 +39,32 @@ the same as i18n-generator-maven-plugin-test-001 but with bundle in the default 
 ```
 
 
+# Test to implement #
+
+<hr/>
+
+
 ## i18n-generator-maven-plugin-test-003 ##
+
+### Description ###
+
+the same as i18n-generator-maven-plugin-test-002 but defined <interfaceName/> and <className/> in the
+default package.
+
+### plugin configuration snippet ###
+
+```xml
+<configuration>
+    <i18nMessagesBundle>
+        <name>messages</name>
+        <interfaceName>Mess</interfaceName>
+        <className>MessImpl</className>
+    </i18nMessagesBundle>
+</configuration>
+```
+
+
+## i18n-generator-maven-plugin-test-004 ##
 
 ### Description ###
 
@@ -61,7 +82,7 @@ the same as i18n-generator-maven-plugin-test-001 with a defined <outputDirectory
 ```
 
 
-## i18n-generator-maven-plugin-test-004 ##
+## i18n-generator-maven-plugin-test-005 ##
 
 ### Description ###
 
@@ -82,7 +103,7 @@ the same as i18n-generator-maven-plugin-test-001 with the whole range of options
 ```
 
 
-## i18n-generator-maven-plugin-test-005 ##
+## i18n-generator-maven-plugin-test-006 ##
 
 ### Description ###
 
