@@ -79,6 +79,7 @@ public class GeneratorPlugin extends AbstractMojo {
     }
 
 	private void generate(I18nMessagesBundle bundle) throws MojoFailureException {
+		checkPreConditions(bundle);
 		String outputDirectory;
 		if (bundle.getOutputDirectory() != null) {
 			outputDirectory = projectBaseDir + "/" + bundle.getOutputDirectory();
@@ -91,10 +92,16 @@ public class GeneratorPlugin extends AbstractMojo {
 			throw new MojoFailureException("<outputDirectory> value cannot be empty");
 		}
 		
-		System.out.println("projectBaseDir = " + projectBaseDir);
     	new GeneratorLauncher().execute(
     			bundle.getName(), bundle.getInterfaceName(), bundle.getClassName(),
     			srcDirectory, resourcesDirectories, outputDirectory);
 	}
-	
+
+	private void checkPreConditions(I18nMessagesBundle bundle) throws MojoFailureException {
+		String name = bundle.getName();
+		if (name == null || name.isEmpty()) {
+			throw new MojoFailureException("I18nMessagesBundle name must be defined");
+		}
+	}
+
 }
