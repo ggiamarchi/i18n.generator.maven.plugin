@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>I18N Generator Maven Plugin by ggiamarchi</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>I18N Generator Maven Plugin</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/ggiamarchi/i18n-generator-maven-plugin">View the Project on GitHub <small>ggiamarchi/i18n-generator-maven-plugin</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ggiamarchi/i18n-generator-maven-plugin/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ggiamarchi/i18n-generator-maven-plugin/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ggiamarchi/i18n-generator-maven-plugin">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>Abstract</h3>
+
+<p>This project provides a Maven plugin that generate Java class with methods that match i18n properties. Calling methods
+on the generated interface rather that reference string property keys in source code prevent never reference a
+non-existing key.</p>
+
+<p>For instance, assume that we have two java property files. The fist one, <code>messages.properties</code>, provides english messages
+(the default language in this case) for an application</p>
+
+<pre><code>hello.world=Hello everybody
+hello.to.somebody=Hello {0} {1}
+</code></pre>
+
+<p>And the second one, <code>messages_fr_FR.properties</code>, provides the same messages in french</p>
+
+<pre><code>hello.world=Bonjour tout le monde
+hello.to.somebody=Bonjour {0} {1}
+</code></pre>
+
+<p>The purpose of the plugin is to generate a java interface (and its implementation, as we'll see later) with methods
+that match properties defined in <code>*.properties</code> files. The generated interface looks something like this one</p>
+
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Messages</span> <span class="o">{</span>
+
+  <span class="n">String</span> <span class="nf">hello_world</span><span class="o">();</span>
+
+  <span class="n">String</span> <span class="nf">hello_to_somebody</span><span class="o">(</span><span class="n">String</span> <span class="n">arg0</span><span class="o">,</span> <span class="n">String</span> <span class="n">arg1</span><span class="o">);</span>
+
+<span class="o">}</span>
+</pre></div>
+
+<p>An implementation class for this interface is generated as well. The goal of this implementation is to return the value
+corresponding to the right language for each interface's method. "The right language" means the one according to either
+the defaut locale or the one given by  a LocaleProvider, an interface that can be implemented to compute the locale on
+the fly at runtime. For example, you would like to get the locale from the user session in case of a web application.</p>
+
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MessagesImpl</span> <span class="kd">implements</span> <span class="n">Messages</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">hello_world</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">hello_to_somebody</span><span class="o">(</span><span class="n">String</span> <span class="n">arg0</span><span class="o">,</span> <span class="n">String</span> <span class="n">arg1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// ...</span>
+  <span class="o">}</span>
+
+  <span class="c1">// Some technical stuffs...</span>
+
+<span class="o">}</span>
+</pre></div>
+
+<p>Then, you finally just have to use these generated class in you application like any another. For example,</p>
+
+<div class="highlight"><pre><span class="n">Messages</span> <span class="n">messages</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">// Instanciate the MessagesImpl class the way you want. With the new keywork, a Spring lookup, ...</span>
+<span class="n">String</span> <span class="n">helloMe</span> <span class="o">=</span> <span class="n">messages</span><span class="o">.</span><span class="na">hello_to_somebody</span><span class="o">(</span><span class="s">"Guillaume"</span><span class="o">,</span> <span class="s">"Giamarchi"</span><span class="o">);</span>
+</pre></div>
+
+<p>That's all folks !</p>
+
+<hr><h3>Quickstart</h3>
+
+<p><em>(Available soon)</em></p>
+
+<hr>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ggiamarchi">ggiamarchi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
