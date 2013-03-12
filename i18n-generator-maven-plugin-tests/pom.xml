@@ -9,7 +9,7 @@
 		<version>0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>i18n-generator-maven-plugin-test</artifactId>
+	<artifactId>i18n-generator-maven-plugin-tests</artifactId>
 	<packaging>pom</packaging>
 	<name>I18N Generator Maven Plugin Tests</name>
 
