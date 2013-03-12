@@ -24,6 +24,7 @@
 	<modules>
 		<module>i18n-generator-maven-plugin-test-001</module>
 		<module>i18n-generator-maven-plugin-test-002</module>
+		<module>i18n-generator-maven-plugin-test-003</module>
 	</modules>
 	
 </project>

@@ -39,11 +39,6 @@ the same as i18n-generator-maven-plugin-test-001 but with bundle in the default 
 ```
 
 
-# Test to implement #
-
-<hr/>
-
-
 ## i18n-generator-maven-plugin-test-003 ##
 
 ### Description ###
@@ -62,6 +57,12 @@ default package.
     </i18nMessagesBundle>
 </configuration>
 ```
+
+
+
+# Test to implement #
+
+<hr/>
 
 
 ## i18n-generator-maven-plugin-test-004 ##
