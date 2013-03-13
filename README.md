@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ggiamarchi/i18n-generator-maven-plugin.png?branch=master)](https://travis-ci.org/ggiamarchi/i18n-generator-maven-plugin)
+[![Build Status](https://api.travis-ci.org/ggiamarchi/i18n.generator.maven.plugin.png?branch=master)](https://travis-ci.org/ggiamarchi/i18n.generator.maven.plugin)
 
 <hr/>
 
