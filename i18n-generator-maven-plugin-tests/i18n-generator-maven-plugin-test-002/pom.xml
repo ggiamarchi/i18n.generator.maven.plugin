@@ -4,7 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.github.i18n-generator-maven-plugin</groupId>
+		<groupId>com.github.i18n.generator.maven.plugin</groupId>
 		<artifactId>i18n-generator-maven-plugin-tests</artifactId>
 		<version>0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
@@ -18,7 +18,7 @@
 		<plugins>
 
 			<plugin>
-				<groupId>com.github.i18n-generator-maven-plugin</groupId>
+				<groupId>com.github.i18n.generator.maven.plugin</groupId>
 				<artifactId>i18n-generator-maven-plugin</artifactId>
 				<version>0.1-SNAPSHOT</version>
 				<executions>
@@ -69,7 +69,7 @@
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>com.github.i18n-generator-maven-plugin</groupId>
+										<groupId>com.github.i18n.generator.maven.plugin</groupId>
 										<artifactId>i18n-generator-maven-plugin</artifactId>
 										<versionRange>[0.1-SNAPSHOT,)</versionRange>
 										<goals>
