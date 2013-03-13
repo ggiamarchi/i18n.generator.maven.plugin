@@ -1,4 +1,4 @@
-package com.github.ggiamarchi.i18n.maven;
+package com.github.ggiamarchi.i18n.generator.maven;
 
 
 public class I18nMessagesBundle {

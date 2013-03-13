@@ -1,4 +1,4 @@
-package com.github.ggiamarchi.i18n.maven;
+package com.github.ggiamarchi.i18n.generator.maven;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.impl.StaticLoggerBinder;
 
-import com.github.ggiamarchi.i18n.GeneratorLauncher;
+import com.github.ggiamarchi.i18n.generator.GeneratorLauncher;
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_SOURCES, threadSafe = false)
 public class GeneratorPlugin extends AbstractMojo {
