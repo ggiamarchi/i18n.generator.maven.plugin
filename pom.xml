@@ -149,7 +149,6 @@
 	</profiles>
 
 	<modules>
-		<module>i18n-runtime</module>
 		<module>i18n-generator</module>
 		<module>i18n-generator-maven-plugin</module>
 		<module>i18n-generator-maven-plugin-tests</module>
