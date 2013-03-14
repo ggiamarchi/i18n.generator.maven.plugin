@@ -31,15 +31,15 @@
 				</executions>
 				<configuration>
 					<i18nMessagesBundles>
-						<param>
+						<i18nMessagesBundle>
 							<name>com.test.i18n.hello</name>
 							<interfaceName>messages.i18n.Hi</interfaceName>
 							<className>messages.i18n.impl.HiImpl</className>
 							<outputDirectory>target/generated-sources/messages/hi</outputDirectory>
-						</param>
-						<param>
+						</i18nMessagesBundle>
+						<i18nMessagesBundle>
 							<name>com.test.i18n.bye</name>
-						</param>
+						</i18nMessagesBundle>
 					</i18nMessagesBundles>
 					<outputDirectory>target/generated-sources/messages/default</outputDirectory>
 				</configuration>
